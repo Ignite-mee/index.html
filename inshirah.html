@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Love Me?</title>
+  <style>
+    /* General Body Styling */
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #ffe4e1;
+      color: #ff69b4;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Popup Container */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff0f5;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 3px solid #ff69b4;
+    }
+
+    /* Popup Heading */
+    .popup h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons Styling */
+    .popup button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: 2px solid #ff69b4;
+      border-radius: 12px;
+      background-color: #ffc0cb;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .popup button:hover {
+      background-color: #ff69b4;
+      color: #fff;
+    }
+
+    /* 'No' Button Moving Animation */
+    .move {
+      position: absolute;
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-10px);
+      }
+      75% {
+        transform: translateX(10px);
+      }
+    }
+
+    /* Hidden Animation Container */
+    .hidden {
+      display: none;
+    }
+
+    /* Animation Container */
+    .animation {
+      margin-top: 50px;
+    }
+
+    /* Hello Kitty Image */
+    .animation img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    /* Message Below Kitty */
+    .animation h2 {
+      font-size: 22px;
+      color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <h1>Inshirah, Do you love me?</h1>
+    <button id="yes-btn">Yes</button>
+    <button id="no-btn">No</button>
+  </div>
+
+  <!-- Animation -->
+  <div class="animation hidden" id="animation">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Hello_Kitty_Character_Logo.png/220px-Hello_Kitty_Character_Logo.png" alt="Hello Kitty">
+    <h2>I'm sorry that I hurt you, Inshirah, but trust me I love you more than anything!</h2>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('no-btn');
+    const yesBtn = document.getElementById('yes-btn');
+    const popup = document.getElementById('popup');
+    const animation = document.getElementById('animation');
+
+    // Moving 'No' Button
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    // 'Yes' Button Action
+    yesBtn.addEventListener('click', () => {
+      popup.classList.add('hidden');
+      animation.classList.remove('hidden');
+    });
+  </script>
+</body>
+  </html>
